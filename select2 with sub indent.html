@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Select 2.2.2</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: #6c81f4;
+            color: gray;
+        }
+
+        .head {
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="head">Example Select Tree Dropdown With</h1>
+    <select id="mySelect">
+    </select>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.full.min.js"></script>
+    <script>
+        $(document).on("ready", function () {
+            var data = [{
+                id: "2",
+                text: "2 - Gastos",
+                level: 1
+            }, {
+                id: "2.1",
+                text: "2.1 - DESPESA OPERACIONAL FIXA",
+                level: 2
+            }, {
+                id: "2.1.1",
+                text: "2.1.1 - PESSOAL",
+                level: 3
+            }, {
+                id: "2.1.1",
+                text: "2.1.1 - PESSOAL",
+                level: 4
+            }, {
+                id: "2.1.1.1",
+                text: "2.1.1.1 - GERENCIA/ADMINSTRATIVO",
+                level: 4
+            }, {
+                id: "2.1.1.1.1",
+                text: "2.1.1.1.1 - SALÁRIOS",
+                level: 5
+            }, {
+                id: "2.1.1.1.2",
+                text: "2.1.1.1.2 - DIVIDENDOS / COMISSÕES /BONUS",
+                level: 5
+            }, {
+                id: "2.1.1.1.3",
+                text: "2.1.1.1.3 - INSS",
+                level: 5
+            }, {
+                id: "2.1.1.1.4",
+                text: "2.1.1.1.4 - FGTS",
+                level: 5
+            }];
+
+            function formatResult(node) {
+                var $result = $('<span style="padding-left:' + (20 * node.level) + 'px;">' + node.text + '</span>');
+                return $result;
+            };
+
+            $("#mySelect").select2({
+                placeholder: 'Select an option',
+                width: "600px",
+                data: data,
+                formatSelection: function (item) {
+                    return item.text
+                },
+                formatResult: function (item) {
+                    return item.text
+                },
+                templateResult: formatResult,
+            });
+        });
+    </script>
+</body>
+
+</html>
